@@ -9,6 +9,7 @@
 void init_button(void);
 int get_button(int button_pin, int button_number);
 
+
 // 채터링제거를 위한 flag변수(각각의 버튼에 대한 정보를 담는 table)
 // 지금은 전역변수로 선언했지만 싫다면, static변수로 만들어줘도됨
 unsigned char previous_button_status[BUTTON_NUMBER] = 

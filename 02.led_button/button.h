@@ -13,8 +13,6 @@
 #include <avr/io.h> // PORTA DDRA 등의 symbom이 정의 되어 있다.
 #include <util/delay.h> // _delay_ms 등의 함수가 들어있다.
 
-#define LED_DDR		DDRA // 이렇게 하는 이유는 LED_DDR에서 바꿔주면 compiler가 알아서 변경해준다
-#define LED_PORT	PORTA
 #define BUTTON_DDR  DDRD
 #define BUTTON_PIN  PIND // PORTD를 read하는 register, 전압5v를 읽으면 1, 0v를 읽으면 0
 
