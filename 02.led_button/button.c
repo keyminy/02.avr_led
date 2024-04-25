@@ -26,6 +26,7 @@ int get_button(int button_pin, int button_number){
 	int current_state;
 
 	//예)BUTTON1은 4가 넘어옴, 2는 5, 3은 5...
+	//BUTTON_PIN값은 눌리면1 안눌리면 0값을 감지함
 	current_state = BUTTON_PIN & (1 << button_pin); // 10000 (1<<4결과)
 	//current_state변수로 버튼 값을 읽습니다.
 
