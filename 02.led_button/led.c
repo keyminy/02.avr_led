@@ -22,3 +22,23 @@ void shift_right_ledon(void){
 		_delay_ms(1000);
 	}
 }
+
+// left to right
+void flower_on(void){
+	PORTA = 0x00;
+	_delay_ms(1000);
+	for(int i = 0; i < 4; i++){
+		PORTA = PORTA | ((0b00001000 >> i) | (0b00010000 << i));
+		_delay_ms(1000);
+	}
+	_delay_ms(1000);
+}
+void flower_off(void){
+	PORTA = 0xff;
+	_delay_ms(1000);
+	for(int i = 0; i < 4; i++){
+		PORTA = PORTA & ((0b01111111 >> i) & (0b11111110 << i));
+		_delay_ms(1000);
+	}
+	_delay_ms(1000);
+}

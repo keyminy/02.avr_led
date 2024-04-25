@@ -16,6 +16,7 @@ extern void shift_right_ledon(void);
 int main(void)
 {
 	int button1_state = 0; // 초기상태는 버튼을 off상태로 출발합니다.
+	int button2_state = 0;
 
 	LED_DDR = 0xff; // LED가 출력 모드 이므로 all 1로 설정을 한다.
 	LED_PORT = 0x00; // LED를 모두 off한다.
@@ -30,24 +31,46 @@ int main(void)
 		// (2) 버튼1을 1번 눌렀다 떼면 led전체를 off
 		//지금 get_button(BUTTON1_PIN,1)은 1로 하드코딩됨
 		if(get_button(BUTTON1_PIN,BUTTON1)){ // 버튼을 1번 눌렀다 떼면 반전시킴
+			switch(button1_state){
+				case 0:
+				shift_left_ledon();
+				break;
+				case 1:
+				shift_right_ledon();
+				break;
+				case 2:
+				LED_PORT = 0xff;
+				break;
+				case 3:
+				LED_PORT = 0x00;
+				break;
+				default:
+				LED_PORT = 0x00;
+				break;
+			}
 			button1_state++;
 			button1_state %= 4;
 		}
-		switch(button1_state){
-			case 0:
-			shift_left_ledon();
-			break;
-			case 1:
-			shift_right_ledon();
-			break;
-			case 2:
-			LED_PORT = 0xff;
-			break;
-			case 3:
-			LED_PORT = 0x00;
-			break;
-			default:
-			break;
+		else if(get_button(BUTTON2_PIN,BUTTON2)){
+			switch(button2_state){
+				case 0:
+				flower_on();
+				break;
+				case 1:
+				flower_off();
+				break;
+				default:
+				LED_PORT = 0x00;
+				break;
+			}
+			button2_state++;
+			button2_state %= 2; 
+		}else if(get_button(BUTTON3_PIN,BUTTON3)){
+			while(1){
+				if(get_button(BUTTON3_PIN,BUTTON3)){
+					break;
+				}
+			}
 		}
 	}
 }

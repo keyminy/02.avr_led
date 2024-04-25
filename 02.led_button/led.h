@@ -16,5 +16,7 @@
 // declare function
 void shift_left_ledon(void);
 void shift_right_ledon(void);
+void flower_on(void);
+void flower_off(void);
 
 #endif /* LED_H_ */
